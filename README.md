@@ -1,3 +1,15 @@
+Customer-Reward-Points-project - endpoint to validate
+
+http://localhost:8080/api/rewardPoints/3
+http://localhost:8080/api/rewardPoints/1?months=3
+http://localhost:8080/api/rewardPoints/3?startDate=2026-01-02&endDate=2026-04-25
+http://localhost:8080/api/rewardPoints/3?startDate=2026-02-17
+http://localhost:8080/api/rewardPoints/3?endDate=2026-03-20
+http://localhost:8080/api/rewardPoints/675 ----> com.retailer.rewardspoints.exception.CustomerNotFoundException: No such customer exists with ID:675
+http://localhost:8080/api/rewardPoints/3?startDate=2026-04-25&endDate=2026-01-01 ----> com.retailer.rewardspoints.exception.IlligalDateRangeException: End date cannot be before start date
+http://localhost:8080/api/rewardPoints/3?startDate=2026-04-28&endDate=2025-07-05   ---> com.retailer.rewardspoints.exception.FutureDateException: Start date and End date cannot be future date
+http://localhost:8080/api/rewardPoints/3?startDate=2024-02-28&endDate=2024-02-28  ----> Leap year working as expected
+
 # Retailer Reward Points API
 
 A Spring Boot REST API that calculates and tracks customer reward points based on their transaction history. Customers earn points on purchases above certain thresholds, and the API provides a breakdown of points earned per month within a configurable date range.
